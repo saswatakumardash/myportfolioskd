@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Certifications - Saswata Kumar Dash</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+      background-color: #000;
+      min-height: 100vh;
+      -webkit-tap-highlight-color: transparent;
+      color: #FDFEFE;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 15px 0;
+    }
+
+    .nav-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      color: #FDFEFE;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: #FDFEFE;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-link.active {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .background-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .background-container video {
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+
+    .background-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 800px;
+      margin: 80px auto 0;
+      padding: 20px 0;
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 40px 0;
+      font-size: 2.5em;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .certification-card {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: #FDFEFE;
+      display: block;
+    }
+
+    .certification-card:hover {
+      transform: translateY(-5px);
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .certification-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .certification-icon {
+      font-size: 40px;
+      color: #4CAF50;
+    }
+
+    .certification-info {
+      flex: 1;
+    }
+
+    .certification-title {
+      font-size: 22px;
+      margin: 0 0 8px 0;
+      color: #FDFEFE;
+    }
+
+    .certification-issuer {
+      font-size: 16px;
+      margin: 0;
+      opacity: 0.9;
+    }
+
+    .view-more-card {
+      text-align: center;
+      padding: 30px;
+    }
+
+    .view-more-link {
+      color: #4CAF50;
+      text-decoration: none;
+      font-size: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .view-more-link:hover {
+      text-decoration: underline;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #FDFEFE;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 20px;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .certification-header {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="homepage.html" class="nav-logo">Home</a>
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="nav-links">
+        <a href="about.html" class="nav-link">About</a>
+        <a href="experience.html" class="nav-link">Experience</a>
+        <a href="skills.html" class="nav-link">Skills</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="certifications.html" class="nav-link active">Certifications</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="background-container">
+    <video id="background-video" autoplay muted loop playsinline poster="your-profile-photo.jpg">
+      <source src="background1.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="container">
+    <h1>Certifications</h1>
+
+    <!-- IIT Kharagpur Certification -->
+    <a href="https://drive.google.com/file/d/1KhD75izIIF6-_HLLeJJBgtGZfSKl7EDz/view?usp=drive_link" class="certification-card" target="_blank">
+      <div class="certification-header">
+        <i class="fas fa-certificate certification-icon"></i>
+        <div class="certification-info">
+          <h2 class="certification-title">Professional Training in Python and Machine Learning</h2>
+          <p class="certification-issuer">Indian Institute of Technology Kharagpur</p>
+        </div>
+        <i class="fas fa-external-link-alt"></i>
+      </div>
+    </a>
+
+    <!-- AICTE IBM Certification -->
+    <a href="https://drive.google.com/file/d/12RonBAjGi-TsUGQDi6i7n3EVYFeio9J7/view?usp=drive_link" class="certification-card" target="_blank">
+      <div class="certification-header">
+        <i class="fas fa-award certification-icon"></i>
+        <div class="certification-info">
+          <h2 class="certification-title">6 Weeks Artificial Intelligence (AI) Internship</h2>
+          <p class="certification-issuer">AICTE & Edunet Foundation with IBM SkillsBuild</p>
+        </div>
+        <i class="fas fa-external-link-alt"></i>
+      </div>
+    </a>
+
+    <!-- View More Card -->
+    <a href="drive.google.com/drive/Certificates" class="certification-card view-more-card" target="_blank">
+      <span class="view-more-link">
+        View More Certificates
+        <i class="fas fa-arrow-right"></i>
+      </span>
+    </a>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const video = document.getElementById('background-video');
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      const navLinks = document.querySelector('.nav-links');
+
+      mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+          video.pause();
+        } else {
+          video.play();
+        }
+      });
+
+      document.addEventListener('touchstart', function() {}, {passive: true});
+    });
+  </script>
+</body>
+</html>

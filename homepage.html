@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Saswata Kumar Dash</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  
+  <style>
+    /* Base styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+      background-color: #000;
+      min-height: 100vh;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Video Background Container */
+    .background-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .background-container video {
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+
+    .background-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    /* Loading Animation */
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3498db;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Main Container */
+    .container {
+      width: 90%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Profile Section */
+    .profile-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      animation: pulse 2s infinite;
+      margin: 20px auto;
+      display: block;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+    }
+
+    /* Typography */
+    h1 {
+      color: #FDFEFE;
+      font-size: clamp(24px, 5vw, 48px);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: 15px 0;
+      text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1s ease-out;
+    }
+
+    .headline {
+      color: #FDFEFE;
+      font-size: clamp(16px, 4vw, 20px);
+      font-weight: 600;
+      margin: 15px 0;
+      padding: 0 10px;
+      line-height: 1.4;
+      text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Quick Links */
+    .quick-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 20px 0;
+      padding: 0 10px;
+    }
+
+    .quick-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      font-size: 16px;
+      text-decoration: none;
+      color: #FDFEFE;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    .quick-link.youtube { background-color: rgba(255, 0, 0, 0.2); }
+    .quick-link.resume { background-color: rgba(76, 175, 80, 0.2); }
+    
+    .quick-link i {
+      margin-right: 8px;
+    }
+
+    /* Role Selection Grid */
+    .role-selection {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: 10px;
+      margin: 20px 0;
+    }
+
+    .role-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      font-size: 16px;
+      text-decoration: none;
+      color: #FDFEFE;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    .role-link i {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    /* Contact Info */
+    .contact-info {
+      margin: 20px 10px;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    .contact-info .headline {
+      font-size: 16px;
+      margin: 0;
+      word-wrap: break-word;
+    }
+
+    /* Social Links */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    .social-link {
+      color: #FDFEFE;
+      font-size: 24px;
+      transition: all 0.3s ease;
+      padding: 10px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .social-link.github { background-color: rgba(51, 51, 51, 0.3); }
+    .social-link.linkedin { background-color: rgba(0, 119, 181, 0.3); }
+    .social-link.twitter { background-color: rgba(29, 161, 242, 0.3); }
+    .social-link.discord { background-color: rgba(114, 137, 218, 0.3); }
+    .social-link.instagram { background-color: rgba(225, 48, 108, 0.3); }
+
+    /* Footer */
+    footer {
+      margin-top: 30px;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    footer .headline {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    /* Active States for Touch Devices */
+    @media (hover: hover) {
+      .quick-link:hover,
+      .role-link:hover,
+      .social-link:hover {
+        transform: translateY(-3px);
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    /* Touch Device Specific */
+    @media (hover: none) {
+      .quick-link:active,
+      .role-link:active,
+      .social-link:active {
+        transform: scale(0.98);
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    /* Larger Screens */
+    @media (min-width: 768px) {
+      .container {
+        padding: 60px 20px;
+      }
+
+      .quick-links {
+        flex-direction: row;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .role-selection {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .role-link {
+        padding: 20px;
+        font-size: 18px;
+      }
+
+      .role-link i {
+        font-size: 36px;
+      }
+
+      .profile-photo {
+        width: 200px;
+        height: 200px;
+      }
+    }
+
+    /* Prevent Text Selection */
+    * {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    /* Enable Text Selection for Contact Info */
+    .contact-info {
+      -webkit-user-select: text;
+      -khtml-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text;
+      user-select: text;
+    }
+  </style>
+</head>
+<body>
+  <div class="loading-overlay">
+    <div class="loading-spinner"></div>
+  </div>
+
+  <div class="background-container">
+    <video id="background-video" autoplay muted loop playsinline poster="your-profile-photo.jpg">
+      <source src="background.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="container">
+    <div class="profile">
+      <img src="your-profile-photo.jpg" alt="Profile Photo" class="profile-photo">
+    </div>
+    
+    <h1>Saswata Kumar Dash</h1>
+    <p class="headline">Former Research Gen Ai Intern @Tomas Bata University Czech Republic Europe|Former Ai Intern @Teralumen Solutions | AI Researcher & Developer ✨️| Leveraging Large Language Models to Revolutionise NLP 💫⭐️</p>
+    
+    <div class="quick-links">
+      <a href="Resume Saswata Kumar Dash.pdf" class="quick-link resume" download>
+        <i class="fas fa-file-download"></i>
+        Download Resume
+      </a>
+      <a href="https://www.youtube.com/@saswatakumardashskd7321" class="quick-link youtube" target="_blank">
+        <i class="fab fa-youtube"></i>
+        YouTube Channel
+      </a>
+    </div>
+
+    <div class="role-selection">
+      <a href="about.html" class="role-link">
+        <i class="fas fa-user"></i>
+        About
+      </a>
+      <a href="experience.html" class="role-link">
+        <i class="fas fa-briefcase"></i>
+        Experience
+      </a>
+      <a href="projects.html" class="role-link">
+        <i class="fas fa-laptop-code"></i>
+        Projects
+      </a>
+      <a href="skills.html" class="role-link">
+        <i class="fas fa-chart-bar"></i>
+        Skills
+      </a>
+      <a href="certifications.html" class="role-link">
+        <i class="fas fa-certificate"></i>
+        Certifications
+      </a>
+    </div>
+
+    <div class="contact-info">
+      <p class="headline">
+        <i class="fas fa-envelope"></i> saswatdashai577@gmail.com
+        <span class="symbol">|</span>
+        <i class="fas fa-phone"></i> 8056198316
+      </p>
+    </div>
+
+    <!-- Social Links Section -->
+    <div class="social-links">
+      <a href="https://github.com/saswatakumardash" class="social-link github" target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://linkedin.com/in/saswatakumardash" class="social-link linkedin" target="_blank">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://twitter.com/dash_skd" class="social-link twitter" target="_blank">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="social-link discord" target="_blank">
+        <i class="fab fa-discord"></i>
+      </a>
+      <a href="https://instagram.com/iamskd_404" class="social-link instagram" target="_blank">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+
+    <footer>
+      <p class="headline">&copy; 2023 Saswat Kumar Dash</p>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const video = document.getElementById('background-video');
+      const loadingOverlay = document.querySelector('.loading-overlay');
+
+      // Optimize video loading
+      function hideLoading() {
+        loadingOverlay.style.opacity = '0';
+        setTimeout(() => {
+          loadingOverlay.style.display = 'none';
+        }, 500);
+      }
+
+      // Handle video loading
+      video.addEventListener('canplay', hideLoading);
+      setTimeout(hideLoading, 2000); // Fallback
+
+      // Error handling
+      video.addEventListener('error', function() {
+        console.error('Error loading video');
+        hideLoading();
+        document.body.style.backgroundColor = '#1a1a1a';
+      });
+
+      // Performance optimizations
+      video.addEventListener('loadedmetadata', function() {
+        video.currentTime = 0;
+      });
+
+      // Battery saving
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+          video.pause();
+        } else {
+          video.play();
+        }
+      });
+
+      // Handle touch events
+      document.addEventListener('touchstart', function() {}, {passive: true});
+    });
+
+    // Prevent default touch behavior
+    document.addEventListener('touchmove', function(e) {
+      if (e.target.closest('.container') === null) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    // Ensure video plays on mobile
+    document.addEventListener('click', function() {
+      video.play();
+    }, { once: true });
+
+    // Handle orientation change
+    window.addEventListener('orientationchange', function() {
+      setTimeout(function() {
+        window.scrollTo(0, 0);
+      }, 200);
+    });
+
+    // Add fade-in animation for elements
+    const elements = document.querySelectorAll('.profile-photo, h1, .headline, .quick-links, .role-selection, .contact-info, .social-links');
+    elements.forEach((element, index) => {
+      element.style.opacity = '0';
+      element.style.animation = `fadeIn 0.5s ease-out ${index * 0.1}s forwards`;
+    });
+
+    // Define fadeIn animation
+    if (!document.querySelector('style#animations')) {
+      const style = document.createElement('style');
+      style.id = 'animations';
+      style.textContent = `
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  </script>
+</body>

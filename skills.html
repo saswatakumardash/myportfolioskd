@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Skills - Saswata Kumar Dash</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+      background-color: #000;
+      min-height: 100vh;
+      -webkit-tap-highlight-color: transparent;
+      color: #FDFEFE;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 15px 0;
+    }
+
+    .nav-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      color: #FDFEFE;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: #FDFEFE;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-link.active {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .background-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .background-container video {
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+
+    .background-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 80px auto 0;
+      padding: 20px 0;
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 40px 0;
+      font-size: 2.5em;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .skills-section {
+      margin-bottom: 40px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      color: #4CAF50;
+      border-bottom: 2px solid #4CAF50;
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+
+    .skill-card {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: #FDFEFE;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(76, 175, 80, 0.1), rgba(76, 175, 80, 0));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .skill-card:hover::before {
+      opacity: 1;
+    }
+
+    .skill-icon {
+      width: 70px;
+      height: 70px;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .skill-card:hover .skill-icon {
+      transform: scale(1.1);
+    }
+
+    .skill-name {
+      font-size: 20px;
+      margin: 10px 0;
+      font-weight: 600;
+    }
+
+    .skill-level-container {
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    .skill-level-text {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .skill-level-bar {
+      width: 100%;
+      height: 6px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .skill-level-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4CAF50, #45a049);
+      border-radius: 3px;
+      transition: width 1s ease-in-out;
+    }
+
+    .beginner { width: 33%; }
+    .intermediate { width: 66%; }
+    .advanced { width: 90%; }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #FDFEFE;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 20px;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+
+      .skills-section {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="homepage.html" class="nav-logo">Home</a>
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="nav-links">
+        <a href="about.html" class="nav-link">About</a>
+        <a href="experience.html" class="nav-link">Experience</a>
+        <a href="skills.html" class="nav-link active">Skills</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="certifications.html" class="nav-link">Certifications</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="background-container">
+    <video id="background-video" autoplay muted loop playsinline poster="your-profile-photo.jpg">
+      <source src="background1.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="container">
+    <h1>Skills & Technologies</h1>
+
+    <div class="skills-section">
+      <h2 class="section-title">Programming Languages</h2>
+      <div class="skills-grid">
+        <a href="https://www.python.org/" class="skill-card" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="skill-icon">
+          <h3 class="skill-name">Python</h3>
+          <div class="skill-level-container">
+            <div class="skill-level-text">
+              <span>Skill Level</span>
+              <span>Advanced</span>
+            </div>
+            <div class="skill-level-bar">
+              <div class="skill-level-fill advanced"></div>
+            </div>
+          </div>
+        </a>
+        
+        <a href="https://www.w3schools.com/sql/" class="skill-card" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL" class="skill-icon">
+          <h3 class="skill-name">SQL</h3>
+          <div class="skill-level-container">
+            <div class="skill-level-text">
+              <span>Skill Level</span>
+              <span>Intermediate</span>
+            </div>
+            <div class="skill-level-bar">
+              <div class="skill-level-fill intermediate"></div>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://www.w3schools.com/c/" class="skill-card" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" class="skill-icon">
+          <h3 class="skill-name">C</h3>
+          <div class="skill-level-container">
+            <div class="skill-level-text">
+              <span>Skill Level</span>
+              <span>Intermediate</span>
+            </div>
+            <div class="skill-level-bar">
+              <div class="skill-level-fill intermediate"></div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="skills-section">
+      <h2 class="section-title">Web Technologies</h2>
+      <div class="skills-grid">
+        <a href="https://www.w3.org/html/" class="skill-card" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" class="skill-icon">
+          <h3 class="skill-name">HTML</h3>
+          <div class="skill-level-container">
+            <div class="skill-level-text">
+              <span>Skill Level</span>
+              <span>Intermediate</span>
+            </div>
+            <div class="skill-level-bar">
+              <div class="skill-level-fill intermediate"></div>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://www.w3.org/css/" class="skill-card" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" class="skill-icon">
+          <h3 class="skill-name">CSS</h3>
+          <div class="skill-level-container">
+            <div class="skill-level-text">
+              <span>Skill Level</span>
+              <span>Intermediate</span>
+            </div>
+            <div class="skill-level-bar">
+              <div class="skill-level-fill intermediate"></div>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://javascript.info/" class="skill-card" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="skill-icon">
+          <h3 class="skill-name">JavaScript</h3>
+          <div class="skill-level-container">
+            <div class="skill-level-text">
+              <span>Skill Level</span>
+              <span>Intermediate</span>
+            </div>
+            <div class="skill-level-bar">
+              <div class="skill-level-fill intermediate"></div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="skills-section">
+      <h2 class="section-title">AI & ML Technologies</h2>
+      <div class="skills-grid">
+        <a href="https://scikit-learn.org/" class="skill-card" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="scikit-learn" class="skill-icon">
+          <h3 class="skill-name">scikit-learn</h3>
+          <div class="skill-level-container">
+            <div class="skill-level-text">
+              <span>Skill Level</span>
+              <span>Advanced</span>
+            </div>
+            <div class="skill-level-bar">
+              <div class="skill-level-fill advanced"></div>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://www.tensorflow.org/" class="skill-card" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" class="skill-icon">
+          <h3 class="skill-name">TensorFlow</h3>
+          <div class="skill-level-container">
+            <div class="skill-level-text">
+              <span>Skill Level</span>
+              <span>Advanced</span>
+            </div>
+            <div class="skill-level-bar">
+              <div class="skill-level-fill advanced"></div>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://pytorch.org/" class="skill-card" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" class="skill-icon">
+          <h3 class="skill-name">PyTorch</h3>
+          <div class="skill-level-container">
+            <div class="skill-level-text">
+              <span>Skill Level</span>
+              <span>Advanced</span>
+            </div>
+            <div class="skill-level-bar">
+              <div class="skill-level-fill advanced"></div>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://opencv.org/" class="skill-card" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV" class="skill-icon">
+          <h3 class="skill-name">OpenCV</h3>
+          <div class="skill-level-container">
+            <div class="skill-level-text">
+              <span>Skill Level</span>
+              <span>Advanced</span>
+            </div>
+            <div class="skill-level-bar">
+              <div class="skill-level-fill advanced"></div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="skills-section">
+      <h2 class="section-title">Development Tools & Technologies</h2>
+      <div class="skills-grid">
+        <a href="https://jupyter.org/" class="skill-card" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" alt="Jupyter Notebook" class="skill-icon">
+          <h3 class="skill-name">Jupyter Notebook</h3>
+          <div class="skill-level-container">
+            <div class="skill-level-text">
+              <span>Skill Level</span>
+              <span>Advanced</span>
+            </div>
+            <div class="skill-level-bar">
+              <div class="skill-level-fill advanced"></div>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://git-scm.com/" class="skill-card" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="skill-icon">
+          <h3 class="skill-name">Git</h3>
+          <div class="skill-level-container">
+            <div class="skill-level-text">
+              <span>Skill Level</span>
+              <span>Intermediate</span>
+            </div>
+            <div class="skill-level-bar">
+              <div class="skill-level-fill intermediate"></div>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://fastapi.tiangolo.com/" class="skill-card" target="_blank">
+          <img src="https://cdn.worldvectorlogo.com/logos/fastapi.svg" alt="FastAPI" class="skill-icon">
+          <h3 class="skill-name">FastAPI</h3>
+          <div class="skill-level-container">
+            <div class="skill-level-text">
+              <span>Skill Level</span>
+              <span>Advanced</span>
+            </div>
+            <div class="skill-level-bar">
+              <div class="skill-level-fill advanced"></div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="skills-section">
+      <h2 class="section-title">Areas of Interest</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <i class="fas fa-robot skill-icon" style="font-size: 48px; margin: 10px 0;"></i>
+          <h3 class="skill-name">Generative AI</h3>
+          <div class="skill-level-container">
+            <div class="skill-level-text">
+              <span>Interest Level</span>
+              <span>High</span>
+            </div>
+            <div class="skill-level-bar">
+              <div class="skill-level-fill advanced"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <i class="fas fa-brain skill-icon" style="font-size: 48px; margin: 10px 0;"></i>
+          <h3 class="skill-name">Deep Learning</h3>
+          <div class="skill-level-container">
+            <div class="skill-level-text">
+              <span>Interest Level</span>
+              <span>High</span>
+            </div>
+            <div class="skill-level-bar">
+              <div class="skill-level-fill advanced"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <i class="fas fa-cogs skill-icon" style="font-size: 48px; margin: 10px 0;"></i>
+          <h3 class="skill-name">Machine Learning</h3>
+          <div class="skill-level-container">
+            <div class="skill-level-text">
+              <span>Interest Level</span>
+              <span>High</span>
+            </div>
+            <div class="skill-level-bar">
+              <div class="skill-level-fill advanced"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <i class="fas fa-comment-dots skill-icon" style="font-size: 48px; margin: 10px 0;"></i>
+          <h3 class="skill-name">NLP</h3>
+          <div class="skill-level-container">
+            <div class="skill-level-text">
+              <span>Interest Level</span>
+              <span>High</span>
+            </div>
+            <div class="skill-level-bar">
+              <div class="skill-level-fill advanced"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="skills-section">
+      <h2 class="section-title">Soft Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <i class="fas fa-comments skill-icon" style="font-size: 48px; margin: 10px 0;"></i>
+          <h3 class="skill-name">Communication</h3>
+          <div class="skill-level-container">
+            <div class="skill-level-text">
+              <span>Skill Level</span>
+              <span>Advanced</span>
+            </div>
+            <div class="skill-level-bar">
+              <div class="skill-level-fill advanced"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <i class="fas fa-users skill-icon" style="font-size: 48px; margin: 10px 0;"></i>
+          <h3 class="skill-name">Teamwork</h3>
+          <div class="skill-level-container">
+            <div class="skill-level-text">
+              <span>Skill Level</span>
+              <span>Advanced</span>
+            </div>
+            <div class="skill-level-bar">
+              <div class="skill-level-fill advanced"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <i class="fas fa-puzzle-piece skill-icon" style="font-size: 48px; margin: 10px 0;"></i>
+          <h3 class="skill-name">Problem Solving</h3>
+          <div class="skill-level-container">
+            <div class="skill-level-text">
+              <span>Skill Level</span>
+              <span>Advanced</span>
+            </div>
+            <div class="skill-level-bar">
+              <div class="skill-level-fill advanced"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <i class="fas fa-handshake skill-icon" style="font-size: 48px; margin: 10px 0;"></i>
+          <h3 class="skill-name">Collaboration</h3>
+          <div class="skill-level-container">
+            <div class="skill-level-text">
+              <span>Skill Level</span>
+              <span>Advanced</span>
+            </div>
+            <div class="skill-level-bar">
+              <div class="skill-level-fill advanced"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
