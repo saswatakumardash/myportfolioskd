@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   
   <style>
-    /* Base styles */
+    /* Base styles remain the same */
     body {
       margin: 0;
       padding: 0;
@@ -18,7 +18,7 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* Background container */
+    /* Background container styles remain the same */
     .background-container {
       position: fixed;
       top: 0;
@@ -50,149 +50,148 @@
       height: 100%;
       background: rgba(0, 0, 0, 0.6);
     }
-    /* Side Video Box - Mobile First Design */
-.side-video-box {
-  position: fixed;
-  right: 10px;
-  top: 50px; /* Position next to profile photo */
-  width: 80px; /* Smaller size for mobile */
-  height: 120px; /* Maintain aspect ratio */
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  z-index: 10;
-  animation: floatVideo 3s ease-in-out infinite;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  display: block; /* Always visible */
-}
 
-.side-video-box video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    /* Updated Side Video Box - Mobile First Design */
+    .side-video-box {
+      position: fixed;
+      right: 10px;
+      top: 50px; /* Position next to profile photo */
+      width: 60px; /* Smaller size for mobile */
+      height: 90px; /* Maintain aspect ratio */
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      z-index: 10;
+      animation: floatVideo 3s ease-in-out infinite;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      display: block; /* Always visible */
+    }
 
-@keyframes floatVideo {
-  0%, 100% { transform: translateY(0) translateX(0); }
-  50% { transform: translateY(0) translateX(-5px); }
-}
+    .side-video-box video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-/* Container adjustments for mobile */
-.container {
-  width: 90%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px 10px;
-}
+    @keyframes floatVideo {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(0) translateX(-5px); }
+    }
 
-/* Role Selection Grid - Updated sizes */
-.role-selection {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  padding: 12px;
-  margin: 20px auto;
-  max-width: 600px;
-}
+    /* Updated Role Selection Grid - Smaller sizes */
+    .role-selection {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: 10px;
+      margin: 15px auto;
+      max-width: 500px;
+    }
 
-.role-link {
-  padding: 15px 12px;
-  font-size: 14px;
-  aspect-ratio: 1.1;
-}
+    .role-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 10px;
+      font-size: 14px;
+      text-decoration: none;
+      color: #FDFEFE;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      aspect-ratio: 1.1;
+    }
 
-.role-link i {
-  font-size: 24px;
-  margin-bottom: 8px;
-}
+    .role-link i {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
 
-/* Tablet breakpoint */
-@media (min-width: 768px) {
-  .side-video-box {
-    width: 120px;
-    height: 180px;
-    right: 20px;
-    top: 60px;
-  }
-  
-  .role-selection {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    padding: 15px;
-  }
-  
-  .role-link {
-    padding: 20px 15px;
-    font-size: 16px;
-  }
+    /* Tablet breakpoint */
+    @media (min-width: 768px) {
+      .side-video-box {
+        width: 80px;
+        height: 120px;
+        right: 15px;
+        top: 60px;
+      }
+      
+      .role-selection {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        padding: 12px;
+      }
+      
+      .role-link {
+        padding: 18px 12px;
+        font-size: 15px;
+      }
 
-  .role-link i {
-    font-size: 28px;
-  }
-}
+      .role-link i {
+        font-size: 24px;
+      }
+    }
 
-/* Desktop breakpoint */
-@media (min-width: 1024px) {
-  .side-video-box {
-    width: 200px;
-    height: 300px;
-    right: 40px;
-    top: 35%;
-    transform: translateY(-50%);
-  }
+    /* Desktop breakpoint */
+    @media (min-width: 1024px) {
+      .side-video-box {
+        width: 160px;
+        height: 240px;
+        right: 30px;
+        top: 35%;
+        transform: translateY(-50%);
+      }
 
-  @keyframes floatVideo {
-    0%, 100% { transform: translateY(-50%) translateX(0); }
-    50% { transform: translateY(-50%) translateX(-10px); }
-  }
-  
-  .role-selection {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
-    padding: 20px;
-    max-width: 1000px;
-  }
-  
-  .role-link {
-    padding: 25px 20px;
-    font-size: 18px;
-  }
+      @keyframes floatVideo {
+        0%, 100% { transform: translateY(-50%) translateX(0); }
+        50% { transform: translateY(-50%) translateX(-8px); }
+      }
+      
+      .role-selection {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 15px;
+        padding: 15px;
+        max-width: 800px;
+      }
+      
+      .role-link {
+        padding: 20px 15px;
+        font-size: 16px;
+      }
 
-  .role-link i {
-    font-size: 32px;
+      .role-link i {
+        font-size: 28px;
+      }
+    }
+    /* Portrait mode specific adjustments */
+    @media (max-width: 480px) and (orientation: portrait) {
+      .side-video-box {
+        width: 80px;
+        height: 120px;
+        right: 10px;
+        top: 50px;
+      }
+      .role-link {
+        padding: 12px 10px;
+        font-size: 13px;
+      }
+      .role-link i {
+        font-size: 22px;
+        margin-bottom: 6px;
+      }
   }
-}
-
-/* Portrait mode specific adjustments */
-@media (max-width: 480px) and (orientation: portrait) {
-  .side-video-box {
-    width: 80px;
-    height: 120px;
-    right: 10px;
-    top: 50px;
-  }
-  
-  .role-link {
-    padding: 12px 10px;
-    font-size: 13px;
-  }
-  
-  .role-link i {
-    font-size: 22px;
-    margin-bottom: 6px;
-  }
-}
-
-/* Landscape mode specific adjustments */
-@media (max-width: 900px) and (orientation: landscape) {
-  .side-video-box {
-    width: 100px;
-    height: 150px;
-    right: 15px;
-    top: 40px;
-  }
-  
-  .role-link {
+  /* Landscape mode specific adjustments */
+  @media (max-width: 900px) and (orientation: landscape) {
+    .side-video-box {
+      width: 100px;
+      height: 150px;
+      right: 15px;
+      top: 40px;
+    }
+    .role-link {
     padding: 15px 12px;
     font-size: 14px;
   }
