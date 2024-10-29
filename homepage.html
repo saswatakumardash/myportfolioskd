@@ -96,16 +96,93 @@
       height: 150px;
       border-radius: 50%;
       object-fit: cover;
-      animation: pulse 2s infinite;
       margin: 20px auto;
       display: block;
+      position: relative;
+      animation: profileEntrance 1.2s ease-out, float 3s ease-in-out infinite;
+      border: 3px solid rgba(255, 255, 255, 0.2);
     }
+
 
     @keyframes pulse {
       0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
       70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
       100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
     }
+    /* Entrance animation */
+    @keyframes profileEntrance {
+      0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(-180deg);
+      }
+      60% {
+        transform: scale(1.1) rotate(10deg)
+      }
+  80% {
+    transform: scale(0.95) rotate(-5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+/* Floating animation */
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0);
+    box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+    box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+    box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+  }
+}
+
+/* Glowing border effect */
+.profile-photo::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #ff3366, #00ffff, #ff3366);
+  z-index: -1;
+  animation: glowingBorder 3s linear infinite;
+  filter: blur(5px);
+}
+
+@keyframes glowingBorder {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Hover effect */
+@media (hover: hover) {
+  .profile-photo:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+    animation-play-state: paused;
+  }
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .profile-photo {
+    width: 200px;
+    height: 200px;
+  }
+}
 
     /* Typography */
     h1 {
