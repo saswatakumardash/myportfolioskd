@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Experience - Saswata Kumar Dash</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  
+  <style>
+    /* Existing base styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+      background-color: #000;
+      min-height: 100vh;
+      -webkit-tap-highlight-color: transparent;
+      color: #FDFEFE;
+    }
+
+    /* Navigation Bar Styles */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 15px 0;
+    }
+
+    .nav-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      color: #FDFEFE;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: #FDFEFE;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-link.active {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #FDFEFE;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Existing background container styles */
+    .background-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .background-container video {
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+
+    .background-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    /* Main content container */
+    .container {
+      width: 90%;
+      max-width: 800px;
+      margin: 80px auto 0;
+      padding: 20px 0;
+      position: relative;
+    }
+
+    /* Experience Card Styles */
+    .experience-card {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(5px);
+      transition: transform 0.3s ease;
+    }
+
+    .experience-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .company-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
+      margin-right: 15px;
+      object-fit: cover;
+      background-color: white;
+      padding: 5px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .company-info {
+      flex: 1;
+    }
+
+    .completion-certificate {
+      margin-left: 20px;
+      padding: 10px 20px;
+      background-color: rgba(76, 175, 80, 0.2);
+      border-radius: 20px;
+      color: #FDFEFE;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .completion-certificate:hover {
+      background-color: rgba(76, 175, 80, 0.3);
+      transform: translateY(-2px);
+    }
+
+    h1 {
+      text-align: center;
+      margin: 40px 0;
+      font-size: 2.5em;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .company-title {
+      font-size: 24px;
+      margin: 0;
+      color: #FDFEFE;
+    }
+
+    .company-position {
+      font-size: 18px;
+      margin: 5px 0;
+      color: #FDFEFE;
+      opacity: 0.9;
+    }
+
+    .company-duration {
+      font-size: 14px;
+      color: #FDFEFE;
+      opacity: 0.8;
+    }
+
+    .responsibilities {
+      list-style-type: none;
+      padding: 0;
+      margin: 15px 0 0;
+    }
+
+    .responsibilities li {
+      margin-bottom: 10px;
+      padding-left: 25px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .responsibilities li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #4CAF50;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 20px;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .experience-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .company-logo {
+        margin: 0 0 15px 0;
+      }
+
+      .completion-certificate {
+        margin: 15px 0 0 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="homepage.html" class="nav-logo">Home</a>
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="nav-links">
+        <a href="about.html" class="nav-link">About</a>
+        <a href="experience.html" class="nav-link active">Experience</a>
+        <a href="skills.html" class="nav-link">Skills</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="certifications.html" class="nav-link">Certifications</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="background-container">
+    <video id="background-video" autoplay muted loop playsinline poster="your-profile-photo.jpg">
+      <source src="background6.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="container">
+    <h1>Experience</h1>
+
+    <!-- Tomas Bata University Experience -->
+    <div class="experience-card">
+      <div class="experience-header">
+        <a href="https://www.utb.cz/en/" target="_blank">
+          <img src="Unknown-2" alt="Tomas Bata University Logo" class="company-logo">
+        </a>
+        <div class="company-info">
+          <h2 class="company-title">Tomas Bata University in Zlín</h2>
+          <h3 class="company-position">Generative AI Research Intern</h3>
+          <p class="company-duration">May 2024 – July 2024 | Zlín, Czech Republic, Europe | On-site</p>
+        </div>
+        <a href="Tomas Bata University in Zlín Internship Completion Certificate.pdf" class="completion-certificate" target="_blank">
+          <i class="fas fa-certificate"></i>
+          Completion Certificate
+        </a>
+      </div>
+      <ul class="responsibilities">
+        <li>Engaged in a prestigious international internship under the mentorship of Prof. Roman Senkerik, Head of A.I. Lab.</li>
+        <li>Developed a fine-tuned Llama 2 Model for enhancing the performance of AI algorithms like meta-heuristics algorithms, evolutionary algorithms, etc.</li>
+        <li>Curated dataset for fine-tuning from scratch.</li>
+        <li>Gained hands-on experience working with the OpenAI API.</li>
+        <li>Explored advanced hyperparameter tuning frameworks and benchmarking randomized optimization algorithms.</li>
+      </ul>
+    </div>
+
+    <!-- Teralumen Solutions Experience -->
+    <div class="experience-card">
+      <div class="experience-header">
+        <a href="https://www.teralumensolutions.com" target="_blank">
+          <img src="logo.avif" alt="Teralumen Solutions Logo" class="company-logo">
+        </a>
+        <div class="company-info">
+          <h2 class="company-title">Teralumen Solutions Pvt Ltd</h2>
+          <h3 class="company-position">Artificial Intelligence in Biotech Intern</h3>
+          <p class="company-duration">August 2023 – December 2023 | Chennai, Tamil Nadu, India | On-site</p>
+        </div>
+        <a href="Internship Completion Certificate-Signed Copy.pdf" class="completion-certificate" target="_blank">
+          <i class="fas fa-certificate"></i>
+          Completion Certificate
+        </a>
+      </div>
+      <ul class="responsibilities">
+        <li>Developed AI algorithms for cancer margin detection using Terahertz measurements.</li>
+        <li>Enhanced algorithms with OpenCV and other tools.</li>
+        <li>Implemented CNN model with 92%, Random Forest Model with 88%, and SVM Model with 87% accuracy.</li>
+        <li>Curated datasets from scratch for robust model training.</li>
+        <li>Gained AI field experience through collaboration and knowledge-sharing.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const video = document.getElementById('background-video');
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      const navLinks = document.querySelector('.nav-links');
+
+      // Mobile menu toggle
+      mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+
+      // Battery saving
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+          video.pause();
+        } else {
+          video.play();
+        }
+      });
+
+      // Handle touch events
+      document.addEventListener('touchstart', function() {}, {passive: true});
+    });
+  </script>
+</body>
+</html>
