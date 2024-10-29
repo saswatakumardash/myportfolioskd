@@ -49,14 +49,14 @@
       background: rgba(0, 0, 0, 0.6);
     }
 
-    /* Further reduced side video box size */
+    /* Updated side video box size for mobile */
     .side-video-box {
       position: fixed;
       right: 10px;
-      top: 40px; /* Moved closer to profile */
-      width: 50px; /* Even smaller for mobile */
-      height: 75px;
-      border-radius: 6px;
+      top: 40px;
+      width: 80px; /* Increased from 50px */
+      height: 120px; /* Increased from 75px */
+      border-radius: 8px;
       overflow: hidden;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       z-index: 10;
@@ -115,7 +115,7 @@
 
     .profile-photo-container {
       position: relative;
-      width: 180px; /* Slightly smaller profile photo */
+      width: 180px;
       height: 180px;
       margin: 20px auto;
     }
@@ -147,14 +147,14 @@
       animation: glowingRGB 20s linear infinite;
     }
 
-    /* Updated Role Selection Grid */
+    /* Updated Role Selection Grid for mobile */
     .role-selection {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 8px; /* Reduced gap */
-      padding: 8px;
+      gap: 12px; /* Increased from 8px */
+      padding: 12px; /* Increased from 8px */
       margin: 15px auto;
-      max-width: 450px; /* Reduced max-width */
+      max-width: 500px; /* Increased from 450px */
     }
 
     .role-link {
@@ -162,12 +162,12 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 12px 8px; /* Reduced padding */
-      font-size: 13px; /* Smaller font */
+      padding: 16px 12px; /* Increased from 12px 8px */
+      font-size: 15px; /* Increased from 13px */
       text-decoration: none;
       color: #FDFEFE;
       background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
+      border-radius: 10px; /* Increased from 8px */
       transition: all 0.3s ease;
       backdrop-filter: blur(5px);
       -webkit-backdrop-filter: blur(5px);
@@ -175,8 +175,8 @@
     }
 
     .role-link i {
-      font-size: 20px; /* Smaller icons */
-      margin-bottom: 6px;
+      font-size: 24px; /* Increased from 20px */
+      margin-bottom: 8px; /* Increased from 6px */
     }
 
     h1 {
@@ -279,60 +279,60 @@
       -webkit-backdrop-filter: blur(5px);
     }
 
-    /* Tablet breakpoint */
+    /* Updated Tablet breakpoint */
     @media (min-width: 768px) {
       .side-video-box {
-        width: 70px;
-        height: 105px;
-        right: 15px;
+        width: 100px; /* Increased from 70px */
+        height: 150px; /* Increased from 105px */
+        right: 20px;
         top: 50px;
       }
       
       .role-selection {
         grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        padding: 10px;
-        max-width: 500px;
+        gap: 15px; /* Increased from 10px */
+        padding: 15px;
+        max-width: 600px; /* Increased from 500px */
       }
       
       .role-link {
-        padding: 15px 10px;
-        font-size: 14px;
+        padding: 20px 15px; /* Increased from 15px 10px */
+        font-size: 16px; /* Increased from 14px */
       }
 
       .role-link i {
-        font-size: 24px;
+        font-size: 28px; /* Increased from 24px */
       }
     }
 
-    /* Desktop breakpoint */
+    /* Updated Desktop breakpoint */
     @media (min-width: 1024px) {
       .container {
         margin-left: 200px;
       }
 
       .side-video-box {
-        width: 140px;
-        height: 210px;
-        right: 25px;
+        width: 180px; /* Increased from 140px */
+        height: 270px; /* Increased from 210px */
+        right: 30px;
         top: 35%;
         transform: translateY(-50%);
       }
 
       .role-selection {
         grid-template-columns: repeat(5, 1fr);
-        gap: 12px;
-        padding: 12px;
-        max-width: 700px;
+        gap: 15px;
+        padding: 15px;
+        max-width: 800px; /* Increased from 700px */
       }
       
       .role-link {
-        padding: 18px 12px;
-        font-size: 15px;
+        padding: 20px 15px;
+        font-size: 16px;
       }
 
       .role-link i {
-        font-size: 26px;
+        font-size: 30px; /* Increased from 26px */
       }
     }
 
@@ -433,7 +433,6 @@
     
     <h1>Saswata Kumar Dash</h1>
     <p class="headline">Former Research Gen Ai Intern @Tomas Bata University Czech Republic Europe|Former Ai Intern @Teralumen Solutions | AI Researcher & Developer ✨️| Leveraging Large Language Models to Revolutionise NLP 💫⭐️</p>
-    
     <div class="quick-links">
       <a href="Resume Saswata Kumar Dash.pdf" class="quick-link resume" download>
         <i class="fas fa-file-download"></i>
