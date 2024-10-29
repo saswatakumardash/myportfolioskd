@@ -54,16 +54,16 @@
 .side-video-box {
   position: fixed;
   right: 10px;
-  top: 20px; /* Position at top for mobile */
-  width: 120px; /* Smaller size for mobile */
-  height: 180px; /* Maintain aspect ratio */
+  top: 50px; /* Position next to profile photo */
+  width: 80px; /* Smaller size for mobile */
+  height: 120px; /* Maintain aspect ratio */
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   z-index: 10;
   animation: floatVideo 3s ease-in-out infinite;
   border: 2px solid rgba(255, 255, 255, 0.2);
-  display: block; /* Always visible by default */
+  display: block; /* Always visible */
 }
 
 .side-video-box video {
@@ -83,20 +83,51 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px 10px;
-  padding-top: 220px; /* Add space for the video box */
+}
+
+/* Role Selection Grid - Updated sizes */
+.role-selection {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 12px;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.role-link {
+  padding: 15px 12px;
+  font-size: 14px;
+  aspect-ratio: 1.1;
+}
+
+.role-link i {
+  font-size: 24px;
+  margin-bottom: 8px;
 }
 
 /* Tablet breakpoint */
 @media (min-width: 768px) {
   .side-video-box {
-    width: 150px;
-    height: 225px;
+    width: 120px;
+    height: 180px;
     right: 20px;
-    top: 30px;
+    top: 60px;
   }
   
-  .container {
-    padding-top: 40px;
+  .role-selection {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .role-link {
+    padding: 20px 15px;
+    font-size: 16px;
+  }
+
+  .role-link i {
+    font-size: 28px;
   }
 }
 
@@ -115,53 +146,58 @@
     50% { transform: translateY(-50%) translateX(-10px); }
   }
   
-  .container {
-    margin-right: 260px;
-    margin-left: auto;
-    max-width: 900px;
-    padding-top: 60px;
-  }
-}
-
-/* Large screen adjustments */
-@media (min-width: 1440px) {
-  .side-video-box {
-    right: 80px;
+  .role-selection {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    padding: 20px;
+    max-width: 1000px;
   }
   
-  .container {
-    margin-right: 300px;
+  .role-link {
+    padding: 25px 20px;
+    font-size: 18px;
+  }
+
+  .role-link i {
+    font-size: 32px;
   }
 }
 
 /* Portrait mode specific adjustments */
 @media (max-width: 480px) and (orientation: portrait) {
   .side-video-box {
-    width: 100px;
-    height: 150px;
+    width: 80px;
+    height: 120px;
     right: 10px;
-    top: 10px;
+    top: 50px;
   }
   
-  .container {
-    padding-top: 180px;
+  .role-link {
+    padding: 12px 10px;
+    font-size: 13px;
+  }
+  
+  .role-link i {
+    font-size: 22px;
+    margin-bottom: 6px;
   }
 }
 
 /* Landscape mode specific adjustments */
 @media (max-width: 900px) and (orientation: landscape) {
   .side-video-box {
-    width: 120px;
-    height: 180px;
-    right: 20px;
-    top: 20px;
+    width: 100px;
+    height: 150px;
+    right: 15px;
+    top: 40px;
   }
   
-  .container {
-    padding-top: 40px;
+  .role-link {
+    padding: 15px 12px;
+    font-size: 14px;
   }
 }
-
+   
     /* Side Video Box */
     .side-video-box {
       position: fixed;
