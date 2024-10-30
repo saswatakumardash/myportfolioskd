@@ -278,6 +278,23 @@
       backdrop-filter: blur(5px);
       -webkit-backdrop-filter: blur(5px);
     }
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    .role-link.game i {
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .role-link.game:hover {
+      transform: translateY(-5px);
+    }
 
     /* Updated Tablet breakpoint */
     @media (min-width: 768px) {
@@ -421,7 +438,10 @@
     <video id="background-video" autoplay muted loop playsinline poster="your-profile-photo.jpg">
       <source src="background.mp4" type="video/mp4">
     </video>
-  </div>
+    <audio id="background-music" loop>
+      <source src="background-music.mp3" type="audio/mpeg">
+    </audio>
+   </div>
 
   <div class="container">
     <div class="profile">
@@ -449,6 +469,11 @@
         <i class="fas fa-user"></i>
         About
       </a>
+      <a href="game.html" class="role-link">
+        <i class="fas fa-car"></i>
+        Game
+      </a>
+
       <a href="experience.html" class="role-link">
         <i class="fas fa-briefcase"></i>
         Experience
@@ -545,6 +570,10 @@
           video.play();
           sideVideo.play();
         }
+      });
+      document.addEventListener("DOMContentLoaded", function() {
+        const backgroundMusic = document.getElementById("background-music");
+        backgroundMusic.play();
       });
 
       // Handle touch events
